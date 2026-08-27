@@ -7,6 +7,8 @@
   <meta name="robots" content="index,follow">
   <meta name="description" content="本协议说明你使用 Knowa 时享有的权利、需要承担的责任，以及本地数据、备份和辅助录入功能的使用边界。">
   <title>Knowa 用户协议</title>
+  <link rel="icon" type="image/png" href="knowa-icon.png">
+  <link rel="apple-touch-icon" href="knowa-icon.png">
   <style>
     :root {
       color-scheme: light dark;
@@ -86,14 +88,12 @@
       text-decoration: none;
     }
 
-    .brand-mark {
-      display: grid;
+    .brand-icon {
+      display: block;
       width: 34px;
       height: 34px;
-      place-items: center;
       border-radius: 11px;
-      color: white;
-      background: linear-gradient(145deg, #438d6d, #225e47);
+      object-fit: cover;
       box-shadow: 0 7px 18px rgba(47, 119, 91, 0.2);
     }
 
@@ -356,7 +356,7 @@
   <header class="site-header">
     <div class="site-header-inner">
       <div class="brand" aria-label="Knowa">
-        <span class="brand-mark" aria-hidden="true">K</span>
+        <img class="brand-icon" src="knowa-icon.png" alt="" width="34" height="34" aria-hidden="true">
         <span>Knowa</span>
       </div>
       <nav class="language-switcher" aria-label="Language">
