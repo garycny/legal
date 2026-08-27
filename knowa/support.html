@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Knowa 官方支持页面：常见问题、数据备份、恢复购买、权限说明和联系方式。">
+  <title>Knowa 支持</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f7f9;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-solid: #ffffff;
+      --text: #14231d;
+      --secondary: #5f6f68;
+      --line: #dfe7e2;
+      --accent: #2f775b;
+      --accent-soft: #e5f2eb;
+      --shadow: 0 18px 55px rgba(24, 58, 44, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "PingFang SC", "Apple SD Gothic Neo", "Noto Sans KR",
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% -10%, rgba(75, 155, 119, 0.16), transparent 34rem),
+        radial-gradient(circle at 92% 4%, rgba(112, 167, 142, 0.1), transparent 30rem),
+        var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgba(195, 210, 201, 0.72);
+      background: rgba(245, 247, 249, 0.82);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    }
+
+    .site-header-inner {
+      display: flex;
+      width: min(100% - 32px, 920px);
+      min-height: 66px;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 760;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(145deg, #438d6d, #225e47);
+      box-shadow: 0 7px 18px rgba(47, 119, 91, 0.2);
+    }
+
+    .language-switcher {
+      display: flex;
+      padding: 4px;
+      gap: 3px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .language-switcher button {
+      min-height: 34px;
+      padding: 5px 10px;
+      border: 0;
+      border-radius: 9px;
+      color: var(--secondary);
+      background: transparent;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .language-switcher button[aria-pressed="true"] {
+      color: white;
+      background: var(--accent);
+      box-shadow: 0 4px 12px rgba(47, 119, 91, 0.18);
+    }
+
+    .page-shell {
+      width: min(100% - 32px, 920px);
+      margin: 0 auto;
+      padding: 58px 0 max(60px, env(safe-area-inset-bottom));
+    }
+
+    .support-document {
+      display: none;
+    }
+
+    body[data-language="zh-Hans"] .support-document[data-language="zh-Hans"],
+    body[data-language="en"] .support-document[data-language="en"],
+    body[data-language="ko"] .support-document[data-language="ko"] {
+      display: block;
+    }
+
+    .hero {
+      padding: clamp(28px, 6vw, 54px);
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(243, 249, 246, 0.9));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 760;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.15rem, 7vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin: 24px 0 0;
+      color: #334a40;
+      font-size: clamp(1rem, 2.4vw, 1.13rem);
+    }
+
+    .contact-row {
+      display: flex;
+      margin-top: 28px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .primary-button {
+      display: inline-flex;
+      min-height: 46px;
+      padding: 10px 18px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      color: white;
+      background: var(--accent);
+      box-shadow: 0 8px 22px rgba(47, 119, 91, 0.2);
+      font-weight: 720;
+      text-decoration: none;
+    }
+
+    .contact-email {
+      color: var(--secondary);
+      font-size: 0.92rem;
+    }
+
+    .info-grid {
+      display: grid;
+      margin-top: 28px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-card {
+      padding: 22px;
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 20px;
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+    }
+
+    .info-icon {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 14px;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .info-card h2 {
+      margin: 0 0 7px;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--secondary);
+      font-size: 0.88rem;
+    }
+
+    .section-title {
+      margin: 52px 0 18px;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      letter-spacing: -0.035em;
+    }
+
+    .faq-list {
+      overflow: hidden;
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 26px;
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+    }
+
+    details + details {
+      border-top: 1px solid var(--line);
+    }
+
+    summary {
+      display: flex;
+      min-height: 74px;
+      padding: 22px 26px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 720;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      display: grid;
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border-radius: 10px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 1.15rem;
+      transition: transform 160ms ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .answer {
+      padding: 0 26px 24px;
+      color: #475b52;
+      font-size: 0.96rem;
+    }
+
+    .answer p {
+      margin: 0;
+    }
+
+    .contact-card {
+      display: flex;
+      padding: clamp(24px, 5vw, 38px);
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 26px;
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h2 {
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+    }
+
+    .contact-card p {
+      max-width: 620px;
+      margin: 0;
+      color: var(--secondary);
+      font-size: 0.94rem;
+    }
+
+    .page-footer {
+      display: flex;
+      padding: 28px 4px 0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--secondary);
+      font-size: 0.86rem;
+    }
+
+    .page-footer p {
+      margin: 0;
+    }
+
+    .page-footer nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    @media (max-width: 720px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .site-header-inner {
+        width: min(100% - 22px, 920px);
+        min-height: 62px;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .language-switcher button {
+        padding-inline: 8px;
+        font-size: 0.72rem;
+      }
+
+      .page-shell {
+        width: min(100% - 22px, 920px);
+        padding-top: 30px;
+      }
+
+      .hero,
+      .faq-list,
+      .contact-card {
+        border-radius: 22px;
+      }
+
+      summary {
+        padding: 20px;
+      }
+
+      .answer {
+        padding: 0 20px 22px;
+      }
+
+      .contact-row,
+      .page-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101713;
+        --surface: rgba(26, 37, 31, 0.9);
+        --surface-solid: #18221d;
+        --text: #edf5f0;
+        --secondary: #aabbb2;
+        --line: #304039;
+        --accent: #82cfac;
+        --accent-soft: #233f33;
+        --shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 12% -10%, rgba(57, 132, 96, 0.2), transparent 34rem),
+          radial-gradient(circle at 92% 4%, rgba(85, 142, 115, 0.12), transparent 30rem),
+          var(--bg);
+      }
+
+      .site-header {
+        border-bottom-color: rgba(54, 73, 63, 0.82);
+        background: rgba(16, 23, 19, 0.84);
+      }
+
+      .hero {
+        border-color: #304039;
+        background: linear-gradient(145deg, #1d2a23, #17211c);
+      }
+
+      .hero-copy,
+      .answer {
+        color: #c2d0c8;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .primary-button {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .page-shell {
+        width: 100%;
+        padding: 0;
+      }
+
+      .hero,
+      .info-card,
+      .faq-list,
+      .contact-card {
+        border: 0;
+        box-shadow: none;
+      }
+
+      details {
+        break-inside: avoid;
+      }
+
+      details > .answer {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body data-language="zh-Hans">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand" aria-label="Knowa">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>Knowa</span>
+      </div>
+      <nav class="language-switcher" aria-label="Language">
+        <button type="button" data-language-button="zh-Hans" aria-pressed="true">简体中文</button>
+        <button type="button" data-language-button="en" aria-pressed="false">English</button>
+        <button type="button" data-language-button="ko" aria-pressed="false">한국어</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <article class="support-document" data-language="zh-Hans" data-page-title="Knowa 支持" lang="zh-CN">
+      <header class="hero">
+        <div class="eyebrow">Knowa · 帮助与反馈</div>
+        <h1>Knowa 支持</h1>
+        <p class="hero-copy">Knowa 是一款本地优先的个人资产管理工具。需要帮助时，请先查看下方常见问题，或通过电子邮件联系我们。</p>
+        <div class="contact-row">
+          <a class="primary-button" href="mailto:support@gridnet.top?subject=Knowa%20支持">发送邮件</a>
+          <span class="contact-email">support@gridnet.top</span>
+        </div>
+      </header>
+
+      <section class="info-grid" aria-label="产品说明">
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">01</div>
+          <h2>本地优先</h2>
+          <p>资产、负债和历史记录默认保存在你的设备上。Knowa 不要求账号、不连接银行，也不运营资产同步服务器。</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">02</div>
+          <h2>权限由你控制</h2>
+          <p>麦克风和语音识别用于语音更新；所选图片用于本机文字识别；生物识别仅用于解锁应用。</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">03</div>
+          <h2>备份由你保管</h2>
+          <p>只有主动导出时才会生成 JSON 备份。你选择保存位置，也可以在数据管理中清除全部本机数据。</p>
+        </div>
+      </section>
+
+      <h2 class="section-title">常见问题</h2>
+      <section class="faq-list">
+        <details>
+          <summary>更改货币会换算金额吗？</summary>
+          <div class="answer"><p>不会。Knowa 只更新货币符号和显示格式，不会改变已经记录的金额数值。</p></div>
+        </details>
+        <details>
+          <summary>备份文件保存在哪里？</summary>
+          <div class="answer"><p>打开“设置 → 数据管理 → 导出备份”。导出时由你选择保存位置，可以存入 iCloud Drive、本机文件或其他支持系统分享的应用。备份包含资产和历史记录，请妥善保管。</p></div>
+        </details>
+        <details>
+          <summary>Knowa 会上传我的资产吗？</summary>
+          <div class="answer"><p>不会。资产数据默认只保存在本机。只有你主动导出、分享，或使用 Apple 语音识别等系统服务时，相应信息才会按照你的操作离开应用控制范围。</p></div>
+        </details>
+        <details>
+          <summary>如何恢复 Knowa Pro？</summary>
+          <div class="answer"><p>进入“设置 → Knowa Pro”，点按“恢复购买”，并使用最初购买时的 Apple 账户。Knowa Pro 是一次性非消耗型 App 内购买，不是订阅，也不会自动续费。</p></div>
+        </details>
+        <details>
+          <summary>语音更新或截图识别无法使用怎么办？</summary>
+          <div class="answer"><p>请先至少创建一项资产。语音更新需要在系统设置中允许麦克风和语音识别；截图识别只读取你通过系统照片选择器选中的图片，并使用 Apple Vision 在设备上识别文字。识别结果保存前仍需由你确认。</p></div>
+        </details>
+        <details>
+          <summary>合并导入和覆盖现有数据有什么区别？</summary>
+          <div class="answer"><p>合并导入会更新备份中可匹配的资产并保留其他数据；覆盖会先清除当前资产与历史记录，再写入备份内容。覆盖前请先导出一份可用备份。</p></div>
+        </details>
+        <details>
+          <summary>如何删除全部数据？</summary>
+          <div class="answer"><p>进入“设置 → 数据管理 → 清除所有数据”。该操作会永久删除全部资产和历史快照，无法撤销；如需保留数据，请先导出备份。</p></div>
+        </details>
+      </section>
+
+      <h2 class="section-title">仍然需要帮助？</h2>
+      <section class="contact-card">
+        <div>
+          <h2>联系 Knowa 支持</h2>
+          <p>请说明问题、App 版本、iOS 版本和设备型号。为了保护隐私，请勿发送资产金额、备份文件、应用锁密码或其他敏感信息。</p>
+        </div>
+        <a class="primary-button" href="mailto:support@gridnet.top?subject=Knowa%20支持">support@gridnet.top</a>
+      </section>
+
+      <footer class="page-footer">
+        <p>© 2026 Knowa · 本地优先</p>
+        <nav aria-label="法律文件">
+          <a href="privacy.html?lang=zh-Hans" data-page-link="privacy.html">隐私政策</a>
+          <span aria-hidden="true">·</span>
+          <a href="terms.html?lang=zh-Hans" data-page-link="terms.html">用户协议</a>
+        </nav>
+      </footer>
+    </article>
+
+    <article class="support-document" data-language="en" data-page-title="Knowa Support" lang="en">
+      <header class="hero">
+        <div class="eyebrow">Knowa · Help &amp; Feedback</div>
+        <h1>Knowa Support</h1>
+        <p class="hero-copy">Knowa is a local-first personal asset manager. If you need help, check the frequently asked questions below or contact us by email.</p>
+        <div class="contact-row">
+          <a class="primary-button" href="mailto:support@gridnet.top?subject=Knowa%20Support">Email Support</a>
+          <span class="contact-email">support@gridnet.top</span>
+        </div>
+      </header>
+
+      <section class="info-grid" aria-label="Product information">
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">01</div>
+          <h2>Local First</h2>
+          <p>Your assets, liabilities, and history stay on your device by default. Knowa requires no account, does not connect to banks, and operates no portfolio sync server.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">02</div>
+          <h2>You Control Permissions</h2>
+          <p>Microphone and speech recognition support voice updates, selected images are processed on-device, and biometrics are used only to unlock the app.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">03</div>
+          <h2>You Control Backups</h2>
+          <p>A JSON backup is created only when you export one. You choose its destination and can clear all local data from Data Management.</p>
+        </div>
+      </section>
+
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <section class="faq-list">
+        <details>
+          <summary>Does changing currency convert amounts?</summary>
+          <div class="answer"><p>No. Knowa changes only the currency symbol and display format, not the numeric values you recorded.</p></div>
+        </details>
+        <details>
+          <summary>Where is my backup saved?</summary>
+          <div class="answer"><p>Open Settings → Data Management → Export Backup. You choose the destination, including iCloud Drive, On My iPhone, or another app in the share sheet. Backups contain assets and history, so keep them secure.</p></div>
+        </details>
+        <details>
+          <summary>Does Knowa upload my assets?</summary>
+          <div class="answer"><p>No. Asset data stays on your device by default. Information leaves the app’s control only when you export or share it, or deliberately use a system service such as Apple speech recognition.</p></div>
+        </details>
+        <details>
+          <summary>How do I restore Knowa Pro?</summary>
+          <div class="answer"><p>Open Settings → Knowa Pro and tap Restore Purchase while using the Apple Account that made the original purchase. Knowa Pro is a one-time, non-consumable In-App Purchase—not a subscription—and does not renew automatically.</p></div>
+        </details>
+        <details>
+          <summary>Why is voice or screenshot recognition unavailable?</summary>
+          <div class="answer"><p>Create at least one asset first. Voice Update requires Microphone and Speech Recognition permission in system Settings. Screenshot Recognition reads only an image you select with the system photo picker and uses Apple Vision on-device. You still approve the result before saving.</p></div>
+        </details>
+        <details>
+          <summary>What is the difference between Merge and Replace import?</summary>
+          <div class="answer"><p>Merge updates assets that can be matched from the backup and keeps other data. Replace clears current assets and history before importing the backup. Export a usable backup before replacing data.</p></div>
+        </details>
+        <details>
+          <summary>How do I delete all data?</summary>
+          <div class="answer"><p>Open Settings → Data Management → Clear All Data. This permanently deletes every asset and history snapshot and cannot be undone. Export a backup first if you need to keep the data.</p></div>
+        </details>
+      </section>
+
+      <h2 class="section-title">Still need help?</h2>
+      <section class="contact-card">
+        <div>
+          <h2>Contact Knowa Support</h2>
+          <p>Include the issue, app version, iOS version, and device model. To protect your privacy, never send asset amounts, backup files, your App Lock PIN, or other sensitive information.</p>
+        </div>
+        <a class="primary-button" href="mailto:support@gridnet.top?subject=Knowa%20Support">support@gridnet.top</a>
+      </section>
+
+      <footer class="page-footer">
+        <p>© 2026 Knowa · Local First</p>
+        <nav aria-label="Legal">
+          <a href="privacy.html?lang=en" data-page-link="privacy.html">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="terms.html?lang=en" data-page-link="terms.html">Terms of Use</a>
+        </nav>
+      </footer>
+    </article>
+
+    <article class="support-document" data-language="ko" data-page-title="Knowa 지원" lang="ko">
+      <header class="hero">
+        <div class="eyebrow">Knowa · 도움말 및 피드백</div>
+        <h1>Knowa 지원</h1>
+        <p class="hero-copy">Knowa는 로컬 우선 개인 자산 관리 앱입니다. 도움이 필요하면 아래의 자주 묻는 질문을 확인하거나 이메일로 문의해 주세요.</p>
+        <div class="contact-row">
+          <a class="primary-button" href="mailto:support@gridnet.top?subject=Knowa%20지원">이메일 문의</a>
+          <span class="contact-email">support@gridnet.top</span>
+        </div>
+      </header>
+
+      <section class="info-grid" aria-label="제품 정보">
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">01</div>
+          <h2>로컬 우선</h2>
+          <p>자산, 부채 및 기록은 기본적으로 기기에 저장됩니다. Knowa는 계정을 요구하지 않고 은행에 연결하거나 자산 동기화 서버를 운영하지 않습니다.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">02</div>
+          <h2>권한은 사용자가 관리</h2>
+          <p>마이크와 음성 인식은 음성 업데이트에, 선택한 이미지는 기기 내 문자 인식에, 생체 인증은 앱 잠금 해제에만 사용됩니다.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">03</div>
+          <h2>백업은 사용자가 보관</h2>
+          <p>직접 내보낼 때만 JSON 백업이 생성됩니다. 저장 위치는 사용자가 선택하며 데이터 관리에서 모든 로컬 데이터를 삭제할 수 있습니다.</p>
+        </div>
+      </section>
+
+      <h2 class="section-title">자주 묻는 질문</h2>
+      <section class="faq-list">
+        <details>
+          <summary>통화를 변경하면 금액도 환산되나요?</summary>
+          <div class="answer"><p>아니요. Knowa는 통화 기호와 표시 형식만 변경하며 이미 기록된 금액의 숫자는 바꾸지 않습니다.</p></div>
+        </details>
+        <details>
+          <summary>백업 파일은 어디에 저장되나요?</summary>
+          <div class="answer"><p>설정 → 데이터 관리 → 백업 내보내기를 여세요. iCloud Drive, 나의 iPhone 또는 공유 시트의 다른 앱 중에서 저장 위치를 선택할 수 있습니다. 백업에는 자산과 기록이 포함되므로 안전하게 보관해 주세요.</p></div>
+        </details>
+        <details>
+          <summary>Knowa가 내 자산을 업로드하나요?</summary>
+          <div class="answer"><p>아니요. 자산 데이터는 기본적으로 기기에만 저장됩니다. 직접 내보내거나 공유하거나 Apple 음성 인식과 같은 시스템 서비스를 사용한 경우에만 해당 정보가 앱의 관리 범위를 벗어납니다.</p></div>
+        </details>
+        <details>
+          <summary>Knowa Pro를 어떻게 복원하나요?</summary>
+          <div class="answer"><p>설정 → Knowa Pro에서 처음 구매할 때 사용한 Apple 계정으로 구매 복원을 누르세요. Knowa Pro는 한 번 구매하는 비소모성 앱 내 구입이며 구독이 아니므로 자동 갱신되지 않습니다.</p></div>
+        </details>
+        <details>
+          <summary>음성 업데이트 또는 스크린샷 인식을 사용할 수 없어요.</summary>
+          <div class="answer"><p>먼저 자산을 하나 이상 만들어 주세요. 음성 업데이트에는 시스템 설정의 마이크 및 음성 인식 권한이 필요합니다. 스크린샷 인식은 시스템 사진 선택기에서 고른 이미지만 읽고 Apple Vision으로 기기에서 처리합니다. 저장 전 결과를 직접 확인해야 합니다.</p></div>
+        </details>
+        <details>
+          <summary>병합 가져오기와 기존 데이터 교체의 차이는 무엇인가요?</summary>
+          <div class="answer"><p>병합은 백업에서 일치하는 자산을 업데이트하고 다른 데이터는 유지합니다. 교체는 현재 자산과 기록을 먼저 삭제한 뒤 백업을 가져옵니다. 교체 전에는 사용 가능한 백업을 내보내세요.</p></div>
+        </details>
+        <details>
+          <summary>모든 데이터를 삭제하려면 어떻게 하나요?</summary>
+          <div class="answer"><p>설정 → 데이터 관리 → 모든 데이터 지우기를 여세요. 모든 자산과 기록이 영구 삭제되며 되돌릴 수 없습니다. 데이터를 보관해야 한다면 먼저 백업을 내보내세요.</p></div>
+        </details>
+      </section>
+
+      <h2 class="section-title">도움이 더 필요한가요?</h2>
+      <section class="contact-card">
+        <div>
+          <h2>Knowa 지원에 문의</h2>
+          <p>문제 내용, 앱 버전, iOS 버전 및 기기 모델을 알려 주세요. 개인정보 보호를 위해 자산 금액, 백업 파일, 앱 잠금 PIN 또는 기타 민감한 정보는 보내지 마세요.</p>
+        </div>
+        <a class="primary-button" href="mailto:support@gridnet.top?subject=Knowa%20지원">support@gridnet.top</a>
+      </section>
+
+      <footer class="page-footer">
+        <p>© 2026 Knowa · 로컬 우선</p>
+        <nav aria-label="법률 문서">
+          <a href="privacy.html?lang=ko" data-page-link="privacy.html">개인정보 처리방침</a>
+          <span aria-hidden="true">·</span>
+          <a href="terms.html?lang=ko" data-page-link="terms.html">이용약관</a>
+        </nav>
+      </footer>
+    </article>
+  </div>
+
+  <script>
+    (function () {
+      var supported = ["zh-Hans", "en", "ko"];
+      var aliases = {
+        "zh": "zh-Hans",
+        "zh-cn": "zh-Hans",
+        "zh-hans": "zh-Hans",
+        "en": "en",
+        "ko": "ko",
+        "ko-kr": "ko"
+      };
+
+      function normalizeLanguage(value) {
+        if (!value) return null;
+        var normalized = value.toLowerCase();
+        return aliases[normalized] || aliases[normalized.split("-")[0]] || null;
+      }
+
+      function initialLanguage() {
+        var requested = new URLSearchParams(window.location.search).get("lang");
+        return normalizeLanguage(requested) ||
+          normalizeLanguage(navigator.language) ||
+          "zh-Hans";
+      }
+
+      function applyLanguage(language, updateURL) {
+        if (supported.indexOf(language) === -1) language = "zh-Hans";
+        document.body.dataset.language = language;
+
+        var activeDocument = document.querySelector(
+          '.support-document[data-language="' + language + '"]'
+        );
+        if (activeDocument) {
+          document.documentElement.lang = activeDocument.lang;
+          document.title = activeDocument.dataset.pageTitle;
+        }
+
+        document.querySelectorAll("[data-language-button]").forEach(function (button) {
+          button.setAttribute(
+            "aria-pressed",
+            button.dataset.languageButton === language ? "true" : "false"
+          );
+        });
+
+        document.querySelectorAll("[data-page-link]").forEach(function (link) {
+          link.setAttribute("href", link.dataset.pageLink + "?lang=" + encodeURIComponent(language));
+        });
+
+        if (updateURL && window.history && window.history.replaceState) {
+          var url = new URL(window.location.href);
+          url.searchParams.set("lang", language);
+          window.history.replaceState(null, "", url);
+        }
+      }
+
+      document.querySelectorAll("[data-language-button]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          applyLanguage(button.dataset.languageButton, true);
+        });
+      });
+
+      applyLanguage(initialLanguage(), false);
+    }());
+  </script>
+</body>
+</html>
