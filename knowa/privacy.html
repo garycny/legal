@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Knowa 采用本地优先设计。本政策说明应用处理哪些信息、为何处理、信息存放在哪里，以及你可以如何控制和删除数据。">
+  <title>Knowa 隐私政策</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f7f9;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-solid: #ffffff;
+      --text: #14231d;
+      --secondary: #5f6f68;
+      --line: #dfe7e2;
+      --accent: #2f775b;
+      --accent-soft: #e5f2eb;
+      --shadow: 0 18px 55px rgba(24, 58, 44, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "PingFang SC", "Apple SD Gothic Neo", "Noto Sans KR",
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% -10%, rgba(75, 155, 119, 0.16), transparent 34rem),
+        radial-gradient(circle at 92% 4%, rgba(112, 167, 142, 0.1), transparent 30rem),
+        var(--bg);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgba(195, 210, 201, 0.72);
+      background: rgba(245, 247, 249, 0.82);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    }
+
+    .site-header-inner {
+      display: flex;
+      width: min(100% - 32px, 920px);
+      min-height: 66px;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 760;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(145deg, #438d6d, #225e47);
+      box-shadow: 0 7px 18px rgba(47, 119, 91, 0.2);
+    }
+
+    .language-switcher {
+      display: flex;
+      padding: 4px;
+      gap: 3px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .language-switcher button {
+      min-height: 34px;
+      padding: 5px 10px;
+      border: 0;
+      border-radius: 9px;
+      color: var(--secondary);
+      background: transparent;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .language-switcher button[aria-pressed="true"] {
+      color: white;
+      background: var(--accent);
+      box-shadow: 0 4px 12px rgba(47, 119, 91, 0.18);
+    }
+
+    .page-shell {
+      width: min(100% - 32px, 920px);
+      margin: 0 auto;
+      padding: 58px 0 max(60px, env(safe-area-inset-bottom));
+    }
+
+    .legal-document {
+      display: none;
+    }
+
+    body[data-language="zh-Hans"] .legal-document[data-language="zh-Hans"],
+    body[data-language="en"] .legal-document[data-language="en"],
+    body[data-language="ko"] .legal-document[data-language="ko"] {
+      display: block;
+    }
+
+    .document-header {
+      padding: clamp(28px, 6vw, 54px);
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(243, 249, 246, 0.9));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 760;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 18ch;
+      margin: 0;
+      font-size: clamp(2.15rem, 7vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .effective-date {
+      margin: 16px 0 0;
+      color: var(--secondary);
+      font-size: 0.92rem;
+    }
+
+    .summary {
+      max-width: 720px;
+      margin: 30px 0 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: #334a40;
+      font-size: clamp(1rem, 2.4vw, 1.13rem);
+    }
+
+    main {
+      margin-top: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 28px;
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+    }
+
+    .policy-section {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 20px;
+      padding: clamp(24px, 5vw, 42px);
+    }
+
+    .policy-section + .policy-section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-number {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 13px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 0.78rem;
+      font-weight: 780;
+      font-variant-numeric: tabular-nums;
+    }
+
+    h2 {
+      margin: 4px 0 10px;
+      font-size: clamp(1.08rem, 3vw, 1.28rem);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .section-copy p {
+      margin: 0;
+      color: #475b52;
+      font-size: 0.98rem;
+    }
+
+    .document-footer {
+      display: flex;
+      padding: 28px 4px 0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--secondary);
+      font-size: 0.86rem;
+    }
+
+    .document-footer p {
+      margin: 0;
+    }
+
+    .document-footer nav {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    @media (max-width: 620px) {
+      .site-header-inner {
+        width: min(100% - 22px, 920px);
+        min-height: 62px;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .language-switcher button {
+        padding-inline: 8px;
+        font-size: 0.72rem;
+      }
+
+      .page-shell {
+        width: min(100% - 22px, 920px);
+        padding-top: 30px;
+      }
+
+      .document-header,
+      main {
+        border-radius: 22px;
+      }
+
+      .policy-section {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .section-number {
+        width: 36px;
+        height: 36px;
+        border-radius: 11px;
+      }
+
+      .document-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101713;
+        --surface: rgba(26, 37, 31, 0.9);
+        --surface-solid: #18221d;
+        --text: #edf5f0;
+        --secondary: #aabbb2;
+        --line: #304039;
+        --accent: #82cfac;
+        --accent-soft: #233f33;
+        --shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 12% -10%, rgba(57, 132, 96, 0.2), transparent 34rem),
+          radial-gradient(circle at 92% 4%, rgba(85, 142, 115, 0.12), transparent 30rem),
+          var(--bg);
+      }
+
+      .site-header {
+        border-bottom-color: rgba(54, 73, 63, 0.82);
+        background: rgba(16, 23, 19, 0.84);
+      }
+
+      .document-header {
+        border-color: #304039;
+        background: linear-gradient(145deg, #1d2a23, #17211c);
+      }
+
+      .summary,
+      .section-copy p {
+        color: #c2d0c8;
+      }
+    }
+
+    @media print {
+      .site-header {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .page-shell {
+        width: 100%;
+        padding: 0;
+      }
+
+      .document-header,
+      main {
+        border: 0;
+        box-shadow: none;
+      }
+
+      .policy-section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body data-language="zh-Hans" data-page-type="privacy">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand" aria-label="Knowa">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>Knowa</span>
+      </div>
+      <nav class="language-switcher" aria-label="Language">
+        <button type="button" data-language-button="zh-Hans" aria-pressed="true">简体中文</button>
+        <button type="button" data-language-button="en" aria-pressed="false">English</button>
+        <button type="button" data-language-button="ko" aria-pressed="false">한국어</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <article
+  class="legal-document"
+  data-language="zh-Hans"
+  data-page-title="Knowa 隐私政策"
+  lang="zh-CN"
+>
+  <header class="document-header">
+    <div class="eyebrow">Knowa · 法律文件</div>
+    <h1>Knowa 隐私政策</h1>
+    <p class="effective-date">生效日期：2026 年 8 月 26 日</p>
+    <p class="summary">Knowa 采用本地优先设计。本政策说明应用处理哪些信息、为何处理、信息存放在哪里，以及你可以如何控制和删除数据。</p>
+  </header>
+
+  <main>
+    <section class="policy-section">
+  <div class="section-number" aria-hidden="true">01</div>
+  <div class="section-copy">
+    <h2>适用范围</h2>
+    <p>本政策适用于 Knowa iOS 应用。Knowa 不要求注册账号，不连接你的银行或交易账户，也不运营用于同步资产数据的开发者服务器。通过系统分享、文件保存或 Apple 平台服务处理的信息，还可能受相应服务提供方政策约束。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">02</div>
+  <div class="section-copy">
+    <h2>本机处理的信息</h2>
+    <p>根据你使用的功能，Knowa 会在设备上处理你录入或导入的资产名称、资产类别、金额、负债状态、备注、更新时间、盘点记录、资产快照和净资产趋势；还会保存货币、语言、外观、隐藏金额、自动锁定等偏好，以及最近一次备份时间等状态信息。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">03</div>
+  <div class="section-copy">
+    <h2>处理目的</h2>
+    <p>上述信息用于展示资产清单和总览、计算资产与负债汇总、生成净资产趋势、完成批量盘点、辅助识别录入内容、执行本地应用锁，以及按照你的指令导出、导入或清除数据。Knowa 不会将这些信息用于广告画像或跨应用追踪。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">04</div>
+  <div class="section-copy">
+    <h2>本地存储</h2>
+    <p>资产、负债和历史快照使用 Apple 提供的 SwiftData 保存在应用沙盒内；偏好设置保存在本机系统设置存储中。除你主动导出、分享或调用系统服务外，Knowa 不会把资产数据库发送给开发者。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">05</div>
+  <div class="section-copy">
+    <h2>App Store 购买与权益信息</h2>
+    <p>购买 Knowa Pro、恢复购买或核验买断权益时，应用会通过 Apple StoreKit 获取商品标识、交易日期、交易状态、商店地区和经 Apple 签名的权益信息。付款信息由 Apple 处理，Knowa 开发者不会取得你的银行卡号或完整支付凭据。这些信息仅用于展示商品、确认使用权限、解锁功能和恢复购买，不会与本机资产金额合并用于广告或画像。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">06</div>
+  <div class="section-copy">
+    <h2>语音识别与麦克风</h2>
+    <p>使用语音更新时，Knowa 会在你授权后访问麦克风，并通过 iOS Speech 框架将语音转换为文字。根据设备、语言和系统设置，识别过程可能在设备端完成，也可能由 Apple 的语音服务处理。Knowa 开发者不运营语音服务器，不接收或保存你的录音与识别文本；录入结果需经你确认后才会写入资产记录。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">07</div>
+  <div class="section-copy">
+    <h2>截图与文字识别</h2>
+    <p>使用截图识别时，只有你通过系统照片选择器明确选择的图片会被读取。Knowa 使用 Apple Vision 在设备上识别文字和金额，所选图片仅用于当前识别流程，不会由 Knowa 上传到开发者服务器，也不会作为资产附件永久保存。原始图片是否保留在照片图库由你自行管理。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">08</div>
+  <div class="section-copy">
+    <h2>应用锁与生物识别</h2>
+    <p>启用应用锁后，六位密码经过哈希处理后存入 iOS Keychain，Knowa 不保存可读取的明文密码。启用 Face ID 或 Touch ID 时，身份验证由 iOS LocalAuthentication 完成，应用仅收到验证成功或失败的结果，不会读取、存储或传输你的面容、指纹等生物特征数据。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">09</div>
+  <div class="section-copy">
+    <h2>数据导出与导入</h2>
+    <p>只有你主动导出时，Knowa 才会生成 JSON 备份。该文件可能包含完整资产、负债和历史记录。你通过系统文件选择器或分享表决定保存位置和接收方；文件离开 Knowa 后，将受所选存储服务或接收方的隐私与安全规则约束。导入时，Knowa 仅读取你选择的兼容备份文件。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">10</div>
+  <div class="section-copy">
+    <h2>网络、分析与第三方 SDK</h2>
+    <p>当前版本不包含广告 SDK、第三方行为分析 SDK或跨应用跟踪器，不建立 Knowa 云端账户，也不向开发者服务器上传资产数据。系统语音识别、文件分享、iCloud Drive 或其他由你选择的系统及第三方服务，可能按照各自政策处理必要信息。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">11</div>
+  <div class="section-copy">
+    <h2>Apple 诊断信息</h2>
+    <p>如果你在 iOS 隐私与安全设置中允许与开发者共享分析数据，Apple 可能向开发者提供崩溃日志、性能指标和经过处理的设备信息。此类信息由 Apple 控制和提供，通常不包含你在 Knowa 中记录的具体资产金额。你可以随时在系统设置中更改该选项。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">12</div>
+  <div class="section-copy">
+    <h2>共享与披露</h2>
+    <p>我们不出售、出租或以广告目的共享你的个人资产数据。信息只会在以下情况下离开应用控制范围：你主动导出、分享或选择外部存储服务；你调用可能使用 Apple 服务的系统能力；或法律要求且我们依法必须配合。由于 Knowa 不持有你的本机资产数据库，通常也无法向第三方提供该数据库。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">13</div>
+  <div class="section-copy">
+    <h2>安全措施与风险</h2>
+    <p>Knowa 使用应用沙盒、Keychain 和系统身份验证等机制保护本机数据，但任何设备和存储方式都无法保证绝对安全。隐藏金额只是界面显示保护，不等同于数据加密。请启用设备密码、妥善保管应用锁密码，并避免将未加密备份保存到不可信位置。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">14</div>
+  <div class="section-copy">
+    <h2>保留与删除</h2>
+    <p>资产记录和历史快照会保留在设备上，直到你编辑、删除、替换导入或在“数据管理”中清除。清除全部数据会删除资产与历史记录，但不会自动重置所有偏好；关闭应用锁会移除保存在 Keychain 中的密码项。卸载前如需保留数据，请先导出备份。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">15</div>
+  <div class="section-copy">
+    <h2>你的选择与权利</h2>
+    <p>你可以在应用内查看、修改和删除资产记录，关闭隐藏金额或应用锁，在系统设置中撤回麦克风、语音识别、照片和生物识别权限，并通过导出获得可迁移副本。撤回权限不会影响此前已经合法完成的处理，但会使相关功能不可用。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">16</div>
+  <div class="section-copy">
+    <h2>未成年人</h2>
+    <p>Knowa 面向能够自行管理个人财务记录的用户，不以未成年人为目标收集信息。未成年人应在监护人同意和指导下使用。由于数据默认保存在设备上，监护人可通过设备和应用设置协助管理或删除相关记录。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">17</div>
+  <div class="section-copy">
+    <h2>跨境处理</h2>
+    <p>Knowa 开发者不建立资产数据云端同步，因此不会主动将你的资产数据库跨境传输。若你使用 Apple 在线语音识别、iCloud Drive、系统分享或自行选择的第三方服务，信息可能由相应提供方在其他地区处理，具体以其服务条款和隐私政策为准。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">18</div>
+  <div class="section-copy">
+    <h2>政策更新与联系我们</h2>
+    <p>我们可能因功能、系统能力或法律要求变化而更新本政策。更新后的版本会在应用内公布并标明生效日期。如对隐私政策、权限或数据处理有疑问，请联系 <a href="mailto:support@gridnet.top">support@gridnet.top</a>。</p>
+  </div>
+</section>
+  </main>
+
+  <footer class="document-footer">
+    <p>© 2026 Knowa · 隐私始于本地</p>
+    <nav aria-label="法律文件">
+      <a href="terms.html" data-preserve-language>用户协议</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:support@gridnet.top">联系我们</a>
+    </nav>
+  </footer>
+</article>
+<article
+  class="legal-document"
+  data-language="en"
+  data-page-title="Knowa Privacy Policy"
+  lang="en"
+>
+  <header class="document-header">
+    <div class="eyebrow">Knowa · Legal</div>
+    <h1>Knowa Privacy Policy</h1>
+    <p class="effective-date">Effective date: August 26, 2026</p>
+    <p class="summary">Knowa is designed to be local-first. This policy explains what the app processes, why it does so, where information is stored, and how you can control or delete it.</p>
+  </header>
+
+  <main>
+    <section class="policy-section">
+  <div class="section-number" aria-hidden="true">01</div>
+  <div class="section-copy">
+    <h2>Scope</h2>
+    <p>This policy applies to the Knowa iOS app. Knowa does not require an account, connect to your bank or trading accounts, or operate a developer server for syncing portfolio data. Information handled through system sharing, file storage, or Apple platform services may also be governed by the relevant provider’s policy.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">02</div>
+  <div class="section-copy">
+    <h2>Information Processed on Your Device</h2>
+    <p>Depending on the features you use, Knowa processes asset names, categories, amounts, liability status, notes, update dates, portfolio checks, asset snapshots, and net-worth trends that you enter or import. It also stores preferences such as currency, language, appearance, hidden amounts, auto-lock, and state such as the most recent backup date.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">03</div>
+  <div class="section-copy">
+    <h2>Purposes of Processing</h2>
+    <p>This information is used to show your portfolio and dashboard, calculate asset and liability totals, generate net-worth trends, perform portfolio checks, assist with input recognition, enforce local app lock, and export, import, or clear data at your direction. Knowa does not use it for advertising profiles or cross-app tracking.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">04</div>
+  <div class="section-copy">
+    <h2>Local Storage</h2>
+    <p>Assets, liabilities, and history snapshots are stored with Apple SwiftData inside the app sandbox. Preferences are stored in local system settings storage. Unless you deliberately export, share, or invoke a system service, Knowa does not send the portfolio database to the developer.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">05</div>
+  <div class="section-copy">
+    <h2>App Store Purchase and Entitlement Information</h2>
+    <p>When you purchase Knowa Pro, restore a purchase, or verify lifetime access, the app uses Apple StoreKit to obtain product identifiers, transaction dates and states, storefront region, and Apple-signed entitlement information. Apple processes payment details; the Knowa developer does not receive your card number or complete payment credentials. This information is used only to display products, determine access, unlock features, and restore purchases, and is not combined with local portfolio amounts for advertising or profiling.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">06</div>
+  <div class="section-copy">
+    <h2>Speech Recognition and Microphone</h2>
+    <p>When you use voice update, Knowa accesses the microphone with your permission and uses the iOS Speech framework to convert speech into text. Depending on your device, language, and settings, recognition may occur on-device or through Apple speech services. The Knowa developer does not operate a speech server or receive or retain your audio or transcript. You must approve results before they are saved.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">07</div>
+  <div class="section-copy">
+    <h2>Screenshots and Text Recognition</h2>
+    <p>Only images you explicitly select through the system photo picker are read for screenshot recognition. Knowa uses Apple Vision on-device to identify text and amounts. The selected image is used for the current recognition flow, is not uploaded to a Knowa developer server, and is not permanently stored as an asset attachment. You control whether the original remains in your photo library.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">08</div>
+  <div class="section-copy">
+    <h2>App Lock and Biometrics</h2>
+    <p>When app lock is enabled, a hash of the six-digit PIN is stored in iOS Keychain; Knowa does not retain a readable plain-text PIN. Face ID or Touch ID verification is performed by iOS LocalAuthentication. The app receives only a success or failure result and does not read, store, or transmit your face or fingerprint data.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">09</div>
+  <div class="section-copy">
+    <h2>Export and Import</h2>
+    <p>Knowa creates a JSON backup only when you choose to export. It may contain complete asset, liability, and history records. You choose the destination or recipient through the system file picker or share sheet. Once the file leaves Knowa, the selected storage provider’s or recipient’s privacy and security practices apply. Import reads only a compatible file you select.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">10</div>
+  <div class="section-copy">
+    <h2>Network, Analytics, and Third-Party SDKs</h2>
+    <p>The current version contains no advertising SDK, third-party behavioral analytics SDK, or cross-app tracker. It creates no Knowa cloud account and does not upload portfolio data to a developer server. System speech recognition, file sharing, iCloud Drive, and other system or third-party services you choose may process necessary information under their own policies.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">11</div>
+  <div class="section-copy">
+    <h2>Apple Diagnostics</h2>
+    <p>If you allow analytics data to be shared with developers in iOS Privacy &amp; Security settings, Apple may provide crash reports, performance metrics, and processed device information. Apple controls and supplies this data, which ordinarily does not include the specific asset amounts you record in Knowa. You can change this choice in system settings.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">12</div>
+  <div class="section-copy">
+    <h2>Sharing and Disclosure</h2>
+    <p>We do not sell, rent, or share your personal portfolio data for advertising. Information leaves the app’s control only when you deliberately export, share, or choose external storage; invoke a system capability that may use Apple services; or where disclosure is legally required. Because Knowa does not hold your local portfolio database, the developer generally cannot provide it to third parties.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">13</div>
+  <div class="section-copy">
+    <h2>Security and Risk</h2>
+    <p>Knowa uses app sandboxing, Keychain, and system authentication to protect local information, but no device or storage method can guarantee absolute security. Hiding amounts protects only the interface and is not database encryption. Use a device passcode, protect your app-lock PIN, and avoid storing unencrypted backups in untrusted locations.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">14</div>
+  <div class="section-copy">
+    <h2>Retention and Deletion</h2>
+    <p>Portfolio records and history remain on your device until you edit, delete, replace-import, or clear them in Data Management. Clearing all data removes portfolio records and history but does not automatically reset every preference. Turning off app lock removes its PIN item from Keychain. Export a backup before uninstalling if you need to retain your data.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">15</div>
+  <div class="section-copy">
+    <h2>Your Choices and Rights</h2>
+    <p>You may view, edit, and delete portfolio records in the app; disable amount hiding or app lock; revoke microphone, speech, photo, or biometric permissions in system settings; and export a portable copy. Revoking permission does not affect processing already lawfully completed, but it prevents the related feature from working.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">16</div>
+  <div class="section-copy">
+    <h2>Children</h2>
+    <p>Knowa is intended for users able to manage their own personal financial records and is not designed to collect information from children. Minors should use it only with a guardian’s consent and guidance. Because data is local by default, guardians can use device and app controls to help manage or delete records.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">17</div>
+  <div class="section-copy">
+    <h2>International Processing</h2>
+    <p>The Knowa developer does not provide cloud portfolio sync and therefore does not actively transfer your portfolio database across borders. If you use Apple online speech recognition, iCloud Drive, system sharing, or another service you choose, that provider may process information in other regions under its own terms and privacy policy.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">18</div>
+  <div class="section-copy">
+    <h2>Policy Updates and Contact</h2>
+    <p>We may update this policy as features, platform capabilities, or legal requirements change. The revised version will appear in the app with its effective date. For questions about privacy, permissions, or data processing, contact <a href="mailto:support@gridnet.top">support@gridnet.top</a>.</p>
+  </div>
+</section>
+  </main>
+
+  <footer class="document-footer">
+    <p>© 2026 Knowa · Privacy starts locally</p>
+    <nav aria-label="Legal">
+      <a href="terms.html" data-preserve-language>Terms of Use</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:support@gridnet.top">Contact</a>
+    </nav>
+  </footer>
+</article>
+<article
+  class="legal-document"
+  data-language="ko"
+  data-page-title="Knowa 개인정보 처리방침"
+  lang="ko"
+>
+  <header class="document-header">
+    <div class="eyebrow">Knowa · 법률 문서</div>
+    <h1>Knowa 개인정보 처리방침</h1>
+    <p class="effective-date">시행일: 2026년 8월 26일</p>
+    <p class="summary">Knowa는 로컬 우선 방식으로 설계되었습니다. 이 방침은 앱이 처리하는 정보, 처리 목적과 저장 위치, 사용자의 통제 및 삭제 방법을 설명합니다.</p>
+  </header>
+
+  <main>
+    <section class="policy-section">
+  <div class="section-number" aria-hidden="true">01</div>
+  <div class="section-copy">
+    <h2>적용 범위</h2>
+    <p>본 방침은 Knowa iOS 앱에 적용됩니다. Knowa는 계정 가입을 요구하지 않고 은행 또는 거래 계좌에 연결하지 않으며 자산 데이터 동기화용 개발자 서버를 운영하지 않습니다. 시스템 공유, 파일 저장 또는 Apple 플랫폼 서비스를 통해 처리되는 정보에는 해당 제공자의 정책도 적용될 수 있습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">02</div>
+  <div class="section-copy">
+    <h2>기기에서 처리하는 정보</h2>
+    <p>사용 기능에 따라 사용자가 입력하거나 가져온 자산명, 분류, 금액, 부채 여부, 메모, 수정일, 자산 점검, 자산 스냅샷 및 순자산 추세를 처리합니다. 통화, 언어, 화면 모드, 금액 숨기기, 자동 잠금 등의 환경설정과 최근 백업 시간 같은 상태도 저장합니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">03</div>
+  <div class="section-copy">
+    <h2>처리 목적</h2>
+    <p>해당 정보는 자산 목록과 대시보드 표시, 자산·부채 합계 계산, 순자산 추세 생성, 자산 점검, 입력 인식 보조, 로컬 앱 잠금, 사용자의 지시에 따른 내보내기·가져오기·삭제에 사용됩니다. 광고 프로필이나 앱 간 추적에는 사용하지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">04</div>
+  <div class="section-copy">
+    <h2>로컬 저장</h2>
+    <p>자산, 부채 및 과거 스냅샷은 Apple SwiftData를 사용해 앱 샌드박스에 저장되며 환경설정은 기기의 시스템 설정 저장소에 보관됩니다. 사용자가 직접 내보내기, 공유 또는 시스템 서비스를 실행하지 않는 한 자산 데이터베이스를 개발자에게 전송하지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">05</div>
+  <div class="section-copy">
+    <h2>App Store 구매 및 이용 권한 정보</h2>
+    <p>Knowa Pro 구매, 구매 복원 또는 영구 이용 권한 확인 시 앱은 Apple StoreKit을 통해 상품 식별자, 거래 날짜와 상태, 스토어 지역 및 Apple이 서명한 이용 권한 정보를 가져옵니다. 결제 정보는 Apple이 처리하며 Knowa 개발자는 카드 번호나 전체 결제 자격 정보를 받지 않습니다. 이 정보는 상품 표시, 이용 권한 확인, 기능 잠금 해제 및 구매 복원에만 사용되며 광고나 프로파일링을 위해 로컬 자산 금액과 결합하지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">06</div>
+  <div class="section-copy">
+    <h2>음성 인식과 마이크</h2>
+    <p>음성 업데이트 사용 시 동의를 받아 마이크에 접근하고 iOS Speech 프레임워크로 음성을 문자로 변환합니다. 기기, 언어 및 시스템 설정에 따라 기기에서 처리되거나 Apple 음성 서비스를 사용할 수 있습니다. Knowa 개발자는 음성 서버를 운영하지 않으며 녹음이나 인식 문자를 수신·보관하지 않습니다. 결과는 사용자가 확인한 후에만 저장됩니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">07</div>
+  <div class="section-copy">
+    <h2>스크린샷과 문자 인식</h2>
+    <p>시스템 사진 선택기에서 사용자가 명시적으로 선택한 이미지만 읽습니다. Apple Vision을 이용해 기기에서 문자와 금액을 인식합니다. 이미지는 현재 인식 과정에만 사용되고 Knowa 개발자 서버에 업로드되지 않으며 자산 첨부 파일로 영구 저장되지 않습니다. 원본의 사진 보관함 유지 여부는 사용자가 관리합니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">08</div>
+  <div class="section-copy">
+    <h2>앱 잠금과 생체 인증</h2>
+    <p>앱 잠금을 켜면 6자리 PIN의 해시가 iOS Keychain에 저장되며 읽을 수 있는 평문 PIN은 보관하지 않습니다. Face ID 또는 Touch ID 인증은 iOS LocalAuthentication이 수행합니다. 앱은 성공 또는 실패 결과만 받고 얼굴이나 지문 정보를 읽거나 저장·전송하지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">09</div>
+  <div class="section-copy">
+    <h2>데이터 내보내기와 가져오기</h2>
+    <p>사용자가 내보내기를 선택한 경우에만 JSON 백업을 생성합니다. 파일에는 전체 자산, 부채 및 내역이 포함될 수 있습니다. 시스템 파일 선택기나 공유 시트에서 저장 위치 또는 수신자를 사용자가 결정합니다. 파일이 Knowa를 벗어나면 선택한 저장 서비스나 수신자의 개인정보 및 보안 정책이 적용됩니다. 가져오기는 사용자가 선택한 호환 파일만 읽습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">10</div>
+  <div class="section-copy">
+    <h2>네트워크, 분석 및 타사 SDK</h2>
+    <p>현재 버전에는 광고 SDK, 타사 행동 분석 SDK 또는 앱 간 추적기가 없으며 Knowa 클라우드 계정을 만들거나 자산 데이터를 개발자 서버에 업로드하지 않습니다. 시스템 음성 인식, 파일 공유, iCloud Drive 및 사용자가 선택한 기타 서비스는 각자의 정책에 따라 필요한 정보를 처리할 수 있습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">11</div>
+  <div class="section-copy">
+    <h2>Apple 진단 정보</h2>
+    <p>iOS 개인정보 보호 및 보안 설정에서 개발자와 분석 데이터 공유를 허용하면 Apple이 충돌 보고서, 성능 지표 및 처리된 기기 정보를 제공할 수 있습니다. 이 정보는 Apple이 관리하고 제공하며 일반적으로 Knowa에 기록한 구체적인 자산 금액은 포함하지 않습니다. 시스템 설정에서 언제든 변경할 수 있습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">12</div>
+  <div class="section-copy">
+    <h2>공유 및 공개</h2>
+    <p>개인 자산 데이터를 판매, 대여하거나 광고 목적으로 공유하지 않습니다. 사용자가 직접 내보내기·공유·외부 저장을 선택한 경우, Apple 서비스를 사용할 수 있는 시스템 기능을 실행한 경우, 또는 법률상 공개 의무가 있는 경우에만 정보가 앱의 통제 범위를 벗어납니다. 개발자는 로컬 자산 데이터베이스를 보유하지 않으므로 일반적으로 제3자에게 제공할 수 없습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">13</div>
+  <div class="section-copy">
+    <h2>보안과 위험</h2>
+    <p>앱 샌드박스, Keychain 및 시스템 인증을 사용해 로컬 정보를 보호하지만 어떤 기기나 저장 방식도 절대적인 안전을 보장할 수 없습니다. 금액 숨기기는 화면 표시를 가리는 기능일 뿐 데이터베이스 암호화가 아닙니다. 기기 암호를 사용하고 앱 잠금 PIN을 보호하며 암호화되지 않은 백업을 신뢰할 수 없는 위치에 저장하지 마세요.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">14</div>
+  <div class="section-copy">
+    <h2>보관 및 삭제</h2>
+    <p>자산 기록과 내역은 사용자가 수정, 삭제, 교체 가져오기 또는 데이터 관리에서 전체 삭제할 때까지 기기에 남습니다. 전체 데이터 삭제는 자산과 내역을 제거하지만 모든 환경설정을 자동으로 초기화하지는 않습니다. 앱 잠금을 끄면 Keychain의 PIN 항목이 삭제됩니다. 앱 삭제 전 데이터가 필요하면 먼저 백업을 내보내세요.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">15</div>
+  <div class="section-copy">
+    <h2>사용자의 선택과 권리</h2>
+    <p>앱에서 자산 기록을 열람, 수정, 삭제하고 금액 숨기기 또는 앱 잠금을 끌 수 있습니다. 시스템 설정에서 마이크, 음성 인식, 사진, 생체 인증 권한을 철회하고 내보내기로 이동 가능한 사본을 받을 수 있습니다. 권한 철회는 이미 적법하게 완료된 처리에는 영향을 주지 않지만 관련 기능을 사용할 수 없게 합니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">16</div>
+  <div class="section-copy">
+    <h2>아동 및 청소년</h2>
+    <p>Knowa는 스스로 개인 재무 기록을 관리할 수 있는 사용자를 대상으로 하며 아동의 정보를 수집하도록 설계되지 않았습니다. 미성년자는 보호자의 동의와 지도 아래 사용해야 합니다. 데이터가 기본적으로 로컬에 있으므로 보호자는 기기 및 앱 설정을 통해 기록 관리와 삭제를 도울 수 있습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">17</div>
+  <div class="section-copy">
+    <h2>국외 처리</h2>
+    <p>Knowa 개발자는 자산 클라우드 동기화를 제공하지 않으므로 자산 데이터베이스를 능동적으로 국외 이전하지 않습니다. Apple 온라인 음성 인식, iCloud Drive, 시스템 공유 또는 사용자가 선택한 서비스를 이용하면 해당 제공자가 자체 약관과 개인정보 처리방침에 따라 다른 지역에서 정보를 처리할 수 있습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">18</div>
+  <div class="section-copy">
+    <h2>방침 변경 및 문의</h2>
+    <p>기능, 플랫폼 또는 법적 요구사항의 변화에 따라 본 방침을 변경할 수 있습니다. 변경본은 시행일과 함께 앱에 게시됩니다. 개인정보, 권한 또는 데이터 처리에 관한 문의는 <a href="mailto:support@gridnet.top">support@gridnet.top</a>으로 연락해 주세요.</p>
+  </div>
+</section>
+  </main>
+
+  <footer class="document-footer">
+    <p>© 2026 Knowa · 개인정보 보호는 로컬에서 시작됩니다</p>
+    <nav aria-label="법률 문서">
+      <a href="terms.html" data-preserve-language>이용약관</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:support@gridnet.top">문의</a>
+    </nav>
+  </footer>
+</article>
+  </div>
+
+  <script>
+    (function () {
+      var supported = ["zh-Hans", "en", "ko"];
+      var languageAliases = {
+        "zh": "zh-Hans",
+        "zh-cn": "zh-Hans",
+        "zh-hans": "zh-Hans",
+        "en": "en",
+        "ko": "ko",
+        "ko-kr": "ko"
+      };
+
+      function normalizeLanguage(value) {
+        if (!value) return null;
+        var normalized = value.toLowerCase();
+        if (languageAliases[normalized]) return languageAliases[normalized];
+        var base = normalized.split("-")[0];
+        return languageAliases[base] || null;
+      }
+
+      function chooseInitialLanguage() {
+        var requested = new URLSearchParams(window.location.search).get("lang");
+        return normalizeLanguage(requested) ||
+          normalizeLanguage(navigator.language) ||
+          "zh-Hans";
+      }
+
+      function applyLanguage(language, updateURL) {
+        if (supported.indexOf(language) === -1) language = "zh-Hans";
+        document.body.dataset.language = language;
+
+        var activeDocument = document.querySelector(
+          '.legal-document[data-language="' + language + '"]'
+        );
+        if (activeDocument) {
+          document.documentElement.lang = activeDocument.lang;
+          document.title = activeDocument.dataset.pageTitle;
+        }
+
+        document.querySelectorAll("[data-language-button]").forEach(function (button) {
+          button.setAttribute(
+            "aria-pressed",
+            button.dataset.languageButton === language ? "true" : "false"
+          );
+        });
+
+        document.querySelectorAll("[data-preserve-language]").forEach(function (link) {
+          var target = new URL(link.getAttribute("href"), window.location.href);
+          target.searchParams.set("lang", language);
+          link.setAttribute("href", target.pathname.split("/").pop() + target.search);
+        });
+
+        if (updateURL && window.history && window.history.replaceState) {
+          var url = new URL(window.location.href);
+          url.searchParams.set("lang", language);
+          window.history.replaceState(null, "", url);
+        }
+      }
+
+      document.querySelectorAll("[data-language-button]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          applyLanguage(button.dataset.languageButton, true);
+        });
+      });
+
+      applyLanguage(chooseInitialLanguage(), false);
+    }());
+  </script>
+</body>
+</html>

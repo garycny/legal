@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="本协议说明你使用 Knowa 时享有的权利、需要承担的责任，以及本地数据、备份和辅助录入功能的使用边界。">
+  <title>Knowa 用户协议</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f7f9;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-solid: #ffffff;
+      --text: #14231d;
+      --secondary: #5f6f68;
+      --line: #dfe7e2;
+      --accent: #2f775b;
+      --accent-soft: #e5f2eb;
+      --shadow: 0 18px 55px rgba(24, 58, 44, 0.08);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "PingFang SC", "Apple SD Gothic Neo", "Noto Sans KR",
+        "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% -10%, rgba(75, 155, 119, 0.16), transparent 34rem),
+        radial-gradient(circle at 92% 4%, rgba(112, 167, 142, 0.1), transparent 30rem),
+        var(--bg);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgba(195, 210, 201, 0.72);
+      background: rgba(245, 247, 249, 0.82);
+      backdrop-filter: blur(18px) saturate(1.2);
+      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+    }
+
+    .site-header-inner {
+      display: flex;
+      width: min(100% - 32px, 920px);
+      min-height: 66px;
+      margin: 0 auto;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 760;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(145deg, #438d6d, #225e47);
+      box-shadow: 0 7px 18px rgba(47, 119, 91, 0.2);
+    }
+
+    .language-switcher {
+      display: flex;
+      padding: 4px;
+      gap: 3px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .language-switcher button {
+      min-height: 34px;
+      padding: 5px 10px;
+      border: 0;
+      border-radius: 9px;
+      color: var(--secondary);
+      background: transparent;
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .language-switcher button[aria-pressed="true"] {
+      color: white;
+      background: var(--accent);
+      box-shadow: 0 4px 12px rgba(47, 119, 91, 0.18);
+    }
+
+    .page-shell {
+      width: min(100% - 32px, 920px);
+      margin: 0 auto;
+      padding: 58px 0 max(60px, env(safe-area-inset-bottom));
+    }
+
+    .legal-document {
+      display: none;
+    }
+
+    body[data-language="zh-Hans"] .legal-document[data-language="zh-Hans"],
+    body[data-language="en"] .legal-document[data-language="en"],
+    body[data-language="ko"] .legal-document[data-language="ko"] {
+      display: block;
+    }
+
+    .document-header {
+      padding: clamp(28px, 6vw, 54px);
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(243, 249, 246, 0.9));
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 760;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 18ch;
+      margin: 0;
+      font-size: clamp(2.15rem, 7vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .effective-date {
+      margin: 16px 0 0;
+      color: var(--secondary);
+      font-size: 0.92rem;
+    }
+
+    .summary {
+      max-width: 720px;
+      margin: 30px 0 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      color: #334a40;
+      font-size: clamp(1rem, 2.4vw, 1.13rem);
+    }
+
+    main {
+      margin-top: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(205, 219, 211, 0.9);
+      border-radius: 28px;
+      background: var(--surface-solid);
+      box-shadow: var(--shadow);
+    }
+
+    .policy-section {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 20px;
+      padding: clamp(24px, 5vw, 42px);
+    }
+
+    .policy-section + .policy-section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-number {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 13px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      font-size: 0.78rem;
+      font-weight: 780;
+      font-variant-numeric: tabular-nums;
+    }
+
+    h2 {
+      margin: 4px 0 10px;
+      font-size: clamp(1.08rem, 3vw, 1.28rem);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .section-copy p {
+      margin: 0;
+      color: #475b52;
+      font-size: 0.98rem;
+    }
+
+    .document-footer {
+      display: flex;
+      padding: 28px 4px 0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: var(--secondary);
+      font-size: 0.86rem;
+    }
+
+    .document-footer p {
+      margin: 0;
+    }
+
+    .document-footer nav {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    @media (max-width: 620px) {
+      .site-header-inner {
+        width: min(100% - 22px, 920px);
+        min-height: 62px;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .language-switcher button {
+        padding-inline: 8px;
+        font-size: 0.72rem;
+      }
+
+      .page-shell {
+        width: min(100% - 22px, 920px);
+        padding-top: 30px;
+      }
+
+      .document-header,
+      main {
+        border-radius: 22px;
+      }
+
+      .policy-section {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .section-number {
+        width: 36px;
+        height: 36px;
+        border-radius: 11px;
+      }
+
+      .document-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101713;
+        --surface: rgba(26, 37, 31, 0.9);
+        --surface-solid: #18221d;
+        --text: #edf5f0;
+        --secondary: #aabbb2;
+        --line: #304039;
+        --accent: #82cfac;
+        --accent-soft: #233f33;
+        --shadow: 0 18px 55px rgba(0, 0, 0, 0.24);
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 12% -10%, rgba(57, 132, 96, 0.2), transparent 34rem),
+          radial-gradient(circle at 92% 4%, rgba(85, 142, 115, 0.12), transparent 30rem),
+          var(--bg);
+      }
+
+      .site-header {
+        border-bottom-color: rgba(54, 73, 63, 0.82);
+        background: rgba(16, 23, 19, 0.84);
+      }
+
+      .document-header {
+        border-color: #304039;
+        background: linear-gradient(145deg, #1d2a23, #17211c);
+      }
+
+      .summary,
+      .section-copy p {
+        color: #c2d0c8;
+      }
+    }
+
+    @media print {
+      .site-header {
+        display: none;
+      }
+
+      body {
+        background: white;
+      }
+
+      .page-shell {
+        width: 100%;
+        padding: 0;
+      }
+
+      .document-header,
+      main {
+        border: 0;
+        box-shadow: none;
+      }
+
+      .policy-section {
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body data-language="zh-Hans" data-page-type="terms">
+  <header class="site-header">
+    <div class="site-header-inner">
+      <div class="brand" aria-label="Knowa">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>Knowa</span>
+      </div>
+      <nav class="language-switcher" aria-label="Language">
+        <button type="button" data-language-button="zh-Hans" aria-pressed="true">简体中文</button>
+        <button type="button" data-language-button="en" aria-pressed="false">English</button>
+        <button type="button" data-language-button="ko" aria-pressed="false">한국어</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <article
+  class="legal-document"
+  data-language="zh-Hans"
+  data-page-title="Knowa 用户协议"
+  lang="zh-CN"
+>
+  <header class="document-header">
+    <div class="eyebrow">Knowa · 法律文件</div>
+    <h1>Knowa 用户协议</h1>
+    <p class="effective-date">生效日期：2026 年 8 月 26 日</p>
+    <p class="summary">本协议说明你使用 Knowa 时享有的权利、需要承担的责任，以及本地数据、备份和辅助录入功能的使用边界。</p>
+  </header>
+
+  <main>
+    <section class="policy-section">
+  <div class="section-number" aria-hidden="true">01</div>
+  <div class="section-copy">
+    <h2>接受本协议</h2>
+    <p>欢迎使用 Knowa。下载、安装、访问或使用本应用，即表示你已阅读、理解并同意受本协议约束。如果你不同意其中任何内容，请停止使用并卸载本应用。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">02</div>
+  <div class="section-copy">
+    <h2>服务说明</h2>
+    <p>Knowa 是一款本地优先的个人资产管理工具，用于记录和汇总资产、负债、净资产及其历史变化，并提供批量盘点、语音辅助录入、截图文字识别、数据导出和导入等功能。Knowa 不提供银行账户连接、资金托管、交易执行或自动核验服务。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">03</div>
+  <div class="section-copy">
+    <h2>使用许可</h2>
+    <p>在你遵守本协议的前提下，我们授予你一项有限的、非独占的、不可转让的、可撤销的许可，仅用于在你拥有或控制的 Apple 设备上进行个人、非商业使用。除法律明确允许外，你不得复制、出租、出售、再许可或以其他方式商业化本应用。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">04</div>
+  <div class="section-copy">
+    <h2>免费版与永久买断</h2>
+    <p>Knowa 免费版最多可创建三项资产，并可使用手动更新、批量盘点、语音辅助录入、截图文字识别、基础总览及最近七次趋势。通过 App Store 一次性买断 Knowa Pro 后，可创建不限数量的资产并查看完整趋势。买断属于非消耗型 App 内购买，可依据 Apple 的购买记录在支持的设备上恢复。商品价格、币种、付款、退款和购买资格由 Apple 及相应 App Store 商店处理。未购买 Pro 不会删除、隐藏或阻止你编辑、备份或导出已有数据。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">05</div>
+  <div class="section-copy">
+    <h2>数据录入与准确性</h2>
+    <p>资产名称、类别、金额、负债、备注及历史记录由你录入、导入或确认。语音识别和截图文字识别仅提供候选结果，可能出现误识别、遗漏或格式错误。你应在保存前核对内容，并自行判断数据是否完整、准确和适合你的用途。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">06</div>
+  <div class="section-copy">
+    <h2>不构成专业建议</h2>
+    <p>Knowa 展示的汇总、比例、趋势和其他信息仅用于个人记录，不构成投资、证券、虚拟货币、税务、会计、法律或其他专业建议，也不构成任何交易或资产配置推荐。你基于应用信息作出的决定及其结果由你自行承担。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">07</div>
+  <div class="section-copy">
+    <h2>设备、密码与备份责任</h2>
+    <p>你应妥善保护设备解锁密码、Knowa 应用锁密码、生物识别访问权限和导出的备份文件。请根据数据重要程度定期备份。因设备损坏或丢失、忘记密码、误删数据、备份泄露、系统故障或未及时备份导致的损失，Knowa 无法代为恢复或补偿。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">08</div>
+  <div class="section-copy">
+    <h2>系统权限与用户内容</h2>
+    <p>当你使用语音录入、截图识别或生物识别解锁时，Knowa 会请求相应的系统权限。你可以拒绝或在系统设置中关闭权限，但相关功能将不可用。你应确保有权使用所选择的图片、文本和其他内容，不得借助本应用处理违法或侵害他人权益的内容。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">09</div>
+  <div class="section-copy">
+    <h2>备份、导入与迁移</h2>
+    <p>导出的 JSON 备份可能包含你的完整资产、负债和历史记录，属于敏感文件。你应选择可信的保存位置并自行保护。导入前请确认文件来源、内容和导入模式；替换导入会先清除当前资产数据，合并导入可能产生重复记录。执行前建议保留一份可用备份。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">10</div>
+  <div class="section-copy">
+    <h2>禁止行为</h2>
+    <p>你不得利用 Knowa 从事违法活动、侵害他人权利、传播恶意内容、干扰应用或系统正常运行、绕过安全机制，或尝试未经授权地访问数据。除适用法律明确允许外，不得对应用进行反向工程、反编译、破解或制作衍生产品。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">11</div>
+  <div class="section-copy">
+    <h2>功能变更与可用性</h2>
+    <p>我们可能为提升安全性、兼容性或使用体验而增加、调整、暂停或移除部分功能。某些能力依赖 iOS、设备型号、系统语言、Apple 服务或你授予的权限，因此可能并非始终可用。重大变化会尽可能通过应用更新说明或适当方式提示。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">12</div>
+  <div class="section-copy">
+    <h2>免责声明</h2>
+    <p>Knowa 按“现状”和“可用”状态提供。在法律允许的最大范围内，我们不保证应用不会中断、完全无误、满足所有特定需求，也不保证语音识别、截图识别、汇总计算或导入结果始终准确。应用不能替代你自己的账本核对、专业判断和可靠备份。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">13</div>
+  <div class="section-copy">
+    <h2>责任限制</h2>
+    <p>在适用法律允许的最大范围内，对于因使用或无法使用 Knowa 而产生的间接、附带、特殊、惩罚性或后果性损失，包括数据丢失、利润损失、决策损失或备份泄露，我们不承担责任。法律不允许排除或限制的责任不受本条影响。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">14</div>
+  <div class="section-copy">
+    <h2>终止使用</h2>
+    <p>你可以随时停止使用并卸载 Knowa。若你严重违反本协议，我们可以在法律允许的范围内终止相关许可。停止使用前，请自行导出需要保留的数据；卸载应用或清除数据后，我们无法为你恢复本机记录。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">15</div>
+  <div class="section-copy">
+    <h2>适用法律与争议</h2>
+    <p>本协议的订立、效力、解释和履行适用你所在地依法应当适用的法律。因本协议或 Knowa 使用产生争议时，双方应先友好协商；协商不成的，依适用法律确定有管辖权的机构处理。</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">16</div>
+  <div class="section-copy">
+    <h2>协议更新与联系我们</h2>
+    <p>我们可能因功能、法律或监管要求变化而更新本协议。更新后的版本会在应用内公布并标明生效日期；继续使用即表示你接受更新后的内容。如对本协议有疑问，请联系 <a href="mailto:support@gridnet.top">support@gridnet.top</a>。</p>
+  </div>
+</section>
+  </main>
+
+  <footer class="document-footer">
+    <p>© 2026 Knowa · 保留所有权利</p>
+    <nav aria-label="法律文件">
+      <a href="privacy.html" data-preserve-language>隐私政策</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:support@gridnet.top">联系我们</a>
+    </nav>
+  </footer>
+</article>
+<article
+  class="legal-document"
+  data-language="en"
+  data-page-title="Knowa Terms of Use"
+  lang="en"
+>
+  <header class="document-header">
+    <div class="eyebrow">Knowa · Legal</div>
+    <h1>Knowa Terms of Use</h1>
+    <p class="effective-date">Effective date: August 26, 2026</p>
+    <p class="summary">These terms explain your rights and responsibilities when using Knowa, including the boundaries of local data, backups, and assisted input features.</p>
+  </header>
+
+  <main>
+    <section class="policy-section">
+  <div class="section-number" aria-hidden="true">01</div>
+  <div class="section-copy">
+    <h2>Acceptance of These Terms</h2>
+    <p>Welcome to Knowa. By downloading, installing, accessing, or using the app, you confirm that you have read, understood, and agreed to these Terms. If you do not agree, stop using and uninstall the app.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">02</div>
+  <div class="section-copy">
+    <h2>Service Description</h2>
+    <p>Knowa is a local-first personal asset manager for recording and summarizing assets, liabilities, net worth, and historical changes. It also offers portfolio checks, voice-assisted entry, screenshot text recognition, and data export and import. Knowa does not connect to bank accounts, hold funds, execute transactions, or automatically verify financial information.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">03</div>
+  <div class="section-copy">
+    <h2>License</h2>
+    <p>Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to use Knowa for personal, non-commercial purposes on Apple devices you own or control. Except where applicable law permits, you may not copy, rent, sell, sublicense, or otherwise commercialize the app.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">04</div>
+  <div class="section-copy">
+    <h2>Free Version and Lifetime Purchase</h2>
+    <p>Knowa’s free version supports up to three assets, with manual updates, portfolio checks, voice-assisted entry, screenshot text recognition, the basic dashboard, and the seven most recent trend points. A one-time Knowa Pro purchase through the App Store unlocks unlimited assets and complete trends. The lifetime unlock is a non-consumable In-App Purchase that can be restored on supported devices using Apple’s purchase record. Apple and the applicable App Store storefront handle product pricing, currency, payment, refunds, and purchase eligibility. Without Pro, Knowa does not delete, hide, or block editing, backup, or export of existing data.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">05</div>
+  <div class="section-copy">
+    <h2>Data Entry and Accuracy</h2>
+    <p>You enter, import, or approve all asset names, categories, amounts, liability status, notes, and history. Voice and screenshot recognition provide suggestions only and may contain errors, omissions, or formatting issues. Review all information before saving and decide whether it is complete and suitable for your needs.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">06</div>
+  <div class="section-copy">
+    <h2>No Professional Advice</h2>
+    <p>Summaries, allocations, trends, and other information in Knowa are for personal record-keeping only. They are not investment, securities, cryptocurrency, tax, accounting, legal, or other professional advice, and do not recommend any transaction or allocation. You remain responsible for your decisions and their outcomes.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">07</div>
+  <div class="section-copy">
+    <h2>Device, Passcode, and Backup Responsibility</h2>
+    <p>You are responsible for protecting your device passcode, Knowa app-lock PIN, biometric access, and exported backups. Back up data as often as its importance requires. Knowa cannot restore or compensate for losses caused by device damage or loss, forgotten credentials, accidental deletion, exposed backups, system failure, or missing backups.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">08</div>
+  <div class="section-copy">
+    <h2>Permissions and User Content</h2>
+    <p>Knowa requests system permissions when you use voice entry, screenshot recognition, or biometric unlock. You may deny or later revoke them, but the related feature will stop working. You must have the right to use any image, text, or other content you select and must not use Knowa to process unlawful or infringing content.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">09</div>
+  <div class="section-copy">
+    <h2>Backup, Import, and Migration</h2>
+    <p>An exported JSON backup may contain your complete asset, liability, and history data and should be treated as sensitive. Choose a trusted destination and protect the file. Before importing, verify its source, contents, and import mode. Replace import clears current portfolio data first, while merge import may create duplicates. Keep a usable backup before proceeding.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">10</div>
+  <div class="section-copy">
+    <h2>Prohibited Conduct</h2>
+    <p>You may not use Knowa for unlawful activity, infringement, malicious content, interference with the app or system, bypassing security, or unauthorized data access. Except where applicable law expressly permits, you may not reverse engineer, decompile, defeat protections, or create derivative products from the app.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">11</div>
+  <div class="section-copy">
+    <h2>Changes and Availability</h2>
+    <p>We may add, modify, suspend, or remove features to improve security, compatibility, or usability. Some capabilities depend on iOS, device hardware, system language, Apple services, or permissions and may not always be available. Material changes will be communicated where reasonably possible through release notes or another appropriate method.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">12</div>
+  <div class="section-copy">
+    <h2>Disclaimer</h2>
+    <p>Knowa is provided “as is” and “as available.” To the fullest extent permitted by law, we do not warrant uninterrupted or error-free operation, fitness for every purpose, or perfect accuracy of recognition, calculations, or imports. Knowa is not a substitute for your own reconciliation, professional judgment, or reliable backups.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">13</div>
+  <div class="section-copy">
+    <h2>Limitation of Liability</h2>
+    <p>To the fullest extent permitted by law, we are not liable for indirect, incidental, special, punitive, or consequential losses arising from the use of or inability to use Knowa, including loss of data, profits, decisions, or backup confidentiality. Nothing in this section limits liability that cannot legally be excluded.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">14</div>
+  <div class="section-copy">
+    <h2>Termination</h2>
+    <p>You may stop using and uninstall Knowa at any time. If you materially breach these Terms, we may terminate the license where permitted by law. Export any information you want to keep before stopping use; we cannot recover local records after they are deleted or the app is removed.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">15</div>
+  <div class="section-copy">
+    <h2>Governing Law and Disputes</h2>
+    <p>These Terms are governed by the laws that must lawfully apply in your place of residence. The parties should first attempt to resolve any dispute relating to Knowa or these Terms through good-faith discussion; unresolved disputes will be handled by the competent authority determined under applicable law.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">16</div>
+  <div class="section-copy">
+    <h2>Updates and Contact</h2>
+    <p>We may update these Terms as features, laws, or regulatory requirements change. The revised version will appear in the app with its effective date. Continued use means you accept the updated Terms. Questions may be sent to <a href="mailto:support@gridnet.top">support@gridnet.top</a>.</p>
+  </div>
+</section>
+  </main>
+
+  <footer class="document-footer">
+    <p>© 2026 Knowa · All rights reserved</p>
+    <nav aria-label="Legal">
+      <a href="privacy.html" data-preserve-language>Privacy Policy</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:support@gridnet.top">Contact</a>
+    </nav>
+  </footer>
+</article>
+<article
+  class="legal-document"
+  data-language="ko"
+  data-page-title="Knowa 이용약관"
+  lang="ko"
+>
+  <header class="document-header">
+    <div class="eyebrow">Knowa · 법률 문서</div>
+    <h1>Knowa 이용약관</h1>
+    <p class="effective-date">시행일: 2026년 8월 26일</p>
+    <p class="summary">본 약관은 Knowa 사용에 따른 권리와 책임, 로컬 데이터, 백업 및 입력 보조 기능의 이용 범위를 설명합니다.</p>
+  </header>
+
+  <main>
+    <section class="policy-section">
+  <div class="section-number" aria-hidden="true">01</div>
+  <div class="section-copy">
+    <h2>약관의 동의</h2>
+    <p>Knowa를 다운로드, 설치, 접속 또는 사용하면 본 약관을 읽고 이해했으며 이에 동의한 것으로 간주됩니다. 약관의 일부라도 동의하지 않는 경우 앱 사용을 중단하고 삭제해 주세요.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">02</div>
+  <div class="section-copy">
+    <h2>서비스 설명</h2>
+    <p>Knowa는 자산, 부채, 순자산 및 변동 내역을 기록하고 요약하는 로컬 우선 개인 자산 관리 앱입니다. 자산 점검, 음성 입력 보조, 스크린샷 문자 인식, 데이터 내보내기와 가져오기도 제공합니다. 은행 계좌 연결, 자금 보관, 거래 실행 또는 금융 정보 자동 검증 기능은 제공하지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">03</div>
+  <div class="section-copy">
+    <h2>사용 허가</h2>
+    <p>본 약관을 준수하는 조건으로, 사용자가 소유하거나 관리하는 Apple 기기에서 개인적이고 비상업적인 목적으로 Knowa를 사용할 수 있는 제한적·비독점적·양도 불가·철회 가능한 권리를 부여합니다. 법률상 허용되는 경우를 제외하고 앱을 복제, 대여, 판매, 재허가 또는 상업화할 수 없습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">04</div>
+  <div class="section-copy">
+    <h2>무료 버전 및 영구 이용권</h2>
+    <p>Knowa 무료 버전에서는 자산을 최대 3개 만들고 수동 업데이트, 자산 점검, 음성 입력 보조, 스크린샷 문자 인식, 기본 대시보드 및 최근 7개 추세를 사용할 수 있습니다. App Store에서 Knowa Pro를 한 번 구매하면 자산 수 제한과 전체 추세가 영구적으로 잠금 해제됩니다. 영구 이용권은 비소모성 앱 내 구입으로, Apple 구매 기록에 따라 지원되는 기기에서 복원할 수 있습니다. 상품 가격, 통화, 결제, 환불 및 구매 자격은 Apple과 해당 App Store가 처리합니다. Pro를 구매하지 않아도 기존 데이터의 확인, 편집, 백업 또는 내보내기가 차단되지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">05</div>
+  <div class="section-copy">
+    <h2>데이터 입력과 정확성</h2>
+    <p>자산명, 분류, 금액, 부채 여부, 메모 및 내역은 사용자가 입력, 가져오기 또는 확인합니다. 음성 및 스크린샷 인식 결과는 제안일 뿐이며 오류, 누락 또는 형식 문제가 있을 수 있습니다. 저장 전에 내용을 확인하고 목적에 맞는지 직접 판단해야 합니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">06</div>
+  <div class="section-copy">
+    <h2>전문 자문이 아님</h2>
+    <p>Knowa의 요약, 비율, 추세 및 기타 정보는 개인 기록용이며 투자, 증권, 가상자산, 세무, 회계, 법률 또는 기타 전문 자문이 아닙니다. 어떠한 거래나 자산 배분도 권유하지 않으며, 앱 정보를 바탕으로 한 판단과 결과는 사용자 책임입니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">07</div>
+  <div class="section-copy">
+    <h2>기기, 비밀번호 및 백업 책임</h2>
+    <p>기기 암호, Knowa 앱 잠금 PIN, 생체 인증 접근 권한 및 내보낸 백업 파일을 안전하게 관리해야 합니다. 데이터 중요도에 맞게 정기적으로 백업해 주세요. 기기 분실·고장, 비밀번호 분실, 오삭제, 백업 유출, 시스템 오류 또는 미백업으로 인한 손실은 Knowa가 복구하거나 보상할 수 없습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">08</div>
+  <div class="section-copy">
+    <h2>시스템 권한과 사용자 콘텐츠</h2>
+    <p>음성 입력, 스크린샷 인식, 생체 인증 잠금 해제를 사용할 때 해당 시스템 권한을 요청합니다. 권한을 거부하거나 설정에서 철회할 수 있으나 관련 기능은 사용할 수 없습니다. 선택한 이미지, 문자 및 기타 콘텐츠를 사용할 권리가 있어야 하며 불법 또는 권리 침해 콘텐츠를 처리해서는 안 됩니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">09</div>
+  <div class="section-copy">
+    <h2>백업, 가져오기 및 이전</h2>
+    <p>내보낸 JSON 백업에는 전체 자산, 부채 및 내역이 포함될 수 있으므로 민감한 파일로 취급해야 합니다. 신뢰할 수 있는 위치를 선택하고 직접 보호해 주세요. 가져오기 전에 출처, 내용 및 방식을 확인하세요. 교체 가져오기는 기존 자산 데이터를 먼저 삭제하며, 병합 가져오기는 중복을 만들 수 있으므로 실행 전에 사용 가능한 백업을 보관하세요.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">10</div>
+  <div class="section-copy">
+    <h2>금지 행위</h2>
+    <p>불법 활동, 타인의 권리 침해, 악성 콘텐츠 처리, 앱이나 시스템 방해, 보안 기능 우회 또는 무단 데이터 접근에 Knowa를 사용할 수 없습니다. 관련 법률이 명시적으로 허용하는 경우를 제외하고 역설계, 디컴파일, 보호 기능 해제 또는 파생 제품 제작을 할 수 없습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">11</div>
+  <div class="section-copy">
+    <h2>기능 변경 및 이용 가능성</h2>
+    <p>보안, 호환성 또는 사용성을 개선하기 위해 기능을 추가, 변경, 중단 또는 제거할 수 있습니다. 일부 기능은 iOS, 기기, 시스템 언어, Apple 서비스 또는 사용자가 허용한 권한에 의존하므로 항상 제공되지 않을 수 있습니다. 중요한 변경은 가능한 범위에서 업데이트 안내 등을 통해 알립니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">12</div>
+  <div class="section-copy">
+    <h2>보증 부인</h2>
+    <p>Knowa는 ‘있는 그대로’ 및 ‘이용 가능한 상태로’ 제공됩니다. 법률이 허용하는 최대 범위에서 중단이나 오류가 없을 것, 모든 목적에 적합할 것, 인식·계산·가져오기 결과가 항상 정확할 것을 보증하지 않습니다. Knowa는 사용자의 대조 확인, 전문적 판단 및 신뢰할 수 있는 백업을 대체하지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">13</div>
+  <div class="section-copy">
+    <h2>책임 제한</h2>
+    <p>법률이 허용하는 최대 범위에서 Knowa의 사용 또는 사용 불가로 발생한 데이터, 이익, 판단 또는 백업 기밀성의 손실 등 간접적·부수적·특별·징벌적·결과적 손해에 책임지지 않습니다. 법률상 배제할 수 없는 책임에는 본 조항이 적용되지 않습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">14</div>
+  <div class="section-copy">
+    <h2>이용 종료</h2>
+    <p>언제든 Knowa 사용을 중단하고 앱을 삭제할 수 있습니다. 본 약관을 중대하게 위반한 경우 법률이 허용하는 범위에서 사용 허가가 종료될 수 있습니다. 사용을 중단하기 전에 보관할 데이터를 내보내세요. 삭제된 로컬 기록은 복구할 수 없습니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">15</div>
+  <div class="section-copy">
+    <h2>준거법 및 분쟁</h2>
+    <p>본 약관은 사용자의 거주지에서 적법하게 적용되어야 하는 법률을 따릅니다. Knowa 또는 본 약관과 관련한 분쟁은 먼저 성실한 협의를 통해 해결하며, 해결되지 않은 경우 관련 법률에 따라 권한 있는 기관에서 처리합니다.</p>
+  </div>
+</section>
+<section class="policy-section">
+  <div class="section-number" aria-hidden="true">16</div>
+  <div class="section-copy">
+    <h2>약관 변경 및 문의</h2>
+    <p>기능, 법률 또는 규제 요건의 변화에 따라 본 약관을 변경할 수 있습니다. 변경본은 시행일과 함께 앱에 게시되며 계속 사용하면 변경된 약관에 동의한 것으로 간주됩니다. 문의: <a href="mailto:support@gridnet.top">support@gridnet.top</a></p>
+  </div>
+</section>
+  </main>
+
+  <footer class="document-footer">
+    <p>© 2026 Knowa · 모든 권리 보유</p>
+    <nav aria-label="법률 문서">
+      <a href="privacy.html" data-preserve-language>개인정보 처리방침</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:support@gridnet.top">문의</a>
+    </nav>
+  </footer>
+</article>
+  </div>
+
+  <script>
+    (function () {
+      var supported = ["zh-Hans", "en", "ko"];
+      var languageAliases = {
+        "zh": "zh-Hans",
+        "zh-cn": "zh-Hans",
+        "zh-hans": "zh-Hans",
+        "en": "en",
+        "ko": "ko",
+        "ko-kr": "ko"
+      };
+
+      function normalizeLanguage(value) {
+        if (!value) return null;
+        var normalized = value.toLowerCase();
+        if (languageAliases[normalized]) return languageAliases[normalized];
+        var base = normalized.split("-")[0];
+        return languageAliases[base] || null;
+      }
+
+      function chooseInitialLanguage() {
+        var requested = new URLSearchParams(window.location.search).get("lang");
+        return normalizeLanguage(requested) ||
+          normalizeLanguage(navigator.language) ||
+          "zh-Hans";
+      }
+
+      function applyLanguage(language, updateURL) {
+        if (supported.indexOf(language) === -1) language = "zh-Hans";
+        document.body.dataset.language = language;
+
+        var activeDocument = document.querySelector(
+          '.legal-document[data-language="' + language + '"]'
+        );
+        if (activeDocument) {
+          document.documentElement.lang = activeDocument.lang;
+          document.title = activeDocument.dataset.pageTitle;
+        }
+
+        document.querySelectorAll("[data-language-button]").forEach(function (button) {
+          button.setAttribute(
+            "aria-pressed",
+            button.dataset.languageButton === language ? "true" : "false"
+          );
+        });
+
+        document.querySelectorAll("[data-preserve-language]").forEach(function (link) {
+          var target = new URL(link.getAttribute("href"), window.location.href);
+          target.searchParams.set("lang", language);
+          link.setAttribute("href", target.pathname.split("/").pop() + target.search);
+        });
+
+        if (updateURL && window.history && window.history.replaceState) {
+          var url = new URL(window.location.href);
+          url.searchParams.set("lang", language);
+          window.history.replaceState(null, "", url);
+        }
+      }
+
+      document.querySelectorAll("[data-language-button]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          applyLanguage(button.dataset.languageButton, true);
+        });
+      });
+
+      applyLanguage(chooseInitialLanguage(), false);
+    }());
+  </script>
+</body>
+</html>
